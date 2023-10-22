@@ -20,7 +20,7 @@ migrate = Migrate(app, db)
 
 @app.route("/")
 def index():
-    return "<p> Hello, from Flask </p>"
+    return "<p> Hello, from Flask! </p>"
 
 
 app.run(host='0.0.0.0', port=81)
