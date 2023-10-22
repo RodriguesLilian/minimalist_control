@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <ul>
+      {% for u in belonging %}
+      <li>
+        {{u.category}} | {{u.description}} | {{u.brand}} | {{u.count}} u | R$
+        {{u.price}} |
+        <a href="/belonging/update/{{u.id}}">Edit</a> |
+        <a href="/belonging/delete/{{u.id}}">Delete</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <br />
+    <a href="/">Back to home</a>
+  </body>
+</html>

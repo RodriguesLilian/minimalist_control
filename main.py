@@ -1,7 +1,7 @@
 from database import db
 from flask import Flask, render_template
 from flask_migrate import Migrate
-from users import bp_users
+from belonging import bp_belonging
 
 app = Flask(__name__)
 
@@ -13,14 +13,11 @@ app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
 
 db.init_app(app)
 
-app.register_blueprint(bp_users, url_prefix='/users')
+app.register_blueprint(bp_belonging, url_prefix='/belonging')
 
 migrate = Migrate(app, db)
 
 
 @app.route("/")
 def index():
-    return render_template('home.html')
-
-
-app.run(host='0.0.0.0', port=81)
+    return render_template('belonging_home.html')
