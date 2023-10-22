@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 from models import User
 from database import db
 
@@ -30,3 +30,20 @@ def create():
 def recovery():
     users = User.query.all()
     return render_template('users_recovery.html', users=users)
+
+
+@bp_users.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    u = User.query.get(id)
+
+    if request.method == 'GET':
+        return render_template('users_update.html', u=u)
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        u.name = name
+        u.email = email
+        db.session.add(u)
+        db.session.commit()
+        return redirect('/users/recovery')
