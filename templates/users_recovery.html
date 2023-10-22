@@ -4,7 +4,8 @@
       {% for u in users %}
       <li>
         {{u.name}} |
-        <a href="/users/update/{{u.id}}">Edit</a>
+        <a href="/users/update/{{u.id}}">Edit</a> |
+        <a href="/users/delete/{{u.id}}">Delete</a>
       </li>
       {% endfor %}
     </ul>
